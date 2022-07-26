@@ -30,6 +30,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CharacterNeedsTick();
+    }
+
+    void CharacterNeedsTick()
+    {
+        for(int i = 0; i < activePartyMembers.Length; i++)
+        {
+            if(activePartyMembers[i] != null)
+            {
+                activePartyMembers[i].DeductNeeds();
+            }
+        }
     }
 }

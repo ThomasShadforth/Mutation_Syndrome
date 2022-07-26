@@ -104,6 +104,28 @@ MonoBehaviour:
   itemSprite: {fileID: 21300000, guid: d27ae5f7ed0e6d447bb4c4b7c37d1731, type: 3}
   valueChange: 0
   affectHP: 0
+  affectNeed: 0
+  needs:
+  - needName: Hunger
+    affected: 0
+    affectedPos: 0
+  - needName: Energy
+    affected: 0
+    affectedPos: 0
+  - needName: Thirst
+    affected: 0
+    affectedPos: 0
+  - needName: Happiness
+    affected: 0
+    affectedPos: 0
+  - needName: Social
+    affected: 0
+    affectedPos: 0
+  - needName: Hygiene
+    affected: 0
+    affectedPos: 0
+  doesTreatEffect: 0
+  effectTreated: 
   armourType: 
   weaponType: 
   armourStrength: 0

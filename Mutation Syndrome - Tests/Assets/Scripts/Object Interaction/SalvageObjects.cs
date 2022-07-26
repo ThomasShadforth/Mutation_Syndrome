@@ -19,6 +19,8 @@ public class SalvageObjects : MonoBehaviour
     public Image timerImage;
     public GameObject itemDropNotif;
 
+    ObjectID objectID;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class SalvageObjects : MonoBehaviour
         }
 
         salvageTime = salvageTimer;
+        objectID = GetComponent<ObjectID>();
     }
 
     
@@ -76,6 +79,12 @@ public class SalvageObjects : MonoBehaviour
         }
     }
 
+    public void LoadSalvage()
+    {
+        isInteractedWith = true;
+        timerImage.gameObject.SetActive(false);
+    }
+
     void ActivateSalvage()
     {
         countdownActive = true;
@@ -102,6 +111,8 @@ public class SalvageObjects : MonoBehaviour
         notif.GetComponent<SalvageItemNotif>().SetNotifText(itemsGiven, itemNumbers);
 
         isInteractedWith = true;
+        objectID.data.interactedWith = isInteractedWith;
+        ObjectManager.instance.UpdateObjectStates(objectID);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

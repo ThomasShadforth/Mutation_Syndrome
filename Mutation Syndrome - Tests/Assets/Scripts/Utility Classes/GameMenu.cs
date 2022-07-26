@@ -40,10 +40,21 @@ public class GameMenu : MonoBehaviour
     public Text weaponText;
     public Text wepPowText;
     public Text armPowText;
+    public Image[] needsMeterImages;
+    public Text[] needsMeterText;
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
+        if (instance != null)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        
         
     }
 
@@ -236,5 +247,11 @@ public class GameMenu : MonoBehaviour
         weaponText.text = GameManager.instance.activePartyMembers[charIndex].equippedWeapon;
         wepPowText.text = GameManager.instance.activePartyMembers[charIndex].wepPow.ToString();
         armPowText.text = GameManager.instance.activePartyMembers[charIndex].totalArmourDef.ToString();
+
+        for(int i = 0; i < needsMeterImages.Length; i++)
+        {
+            needsMeterText[i].text = GameManager.instance.activePartyMembers[charIndex].needNames[i] + ": " + GameManager.instance.activePartyMembers[charIndex].needs[i].needNumber + " / " + GameManager.instance.activePartyMembers[charIndex].needs[i].maxNeedMeter;
+            needsMeterImages[i].fillAmount = GameManager.instance.activePartyMembers[charIndex].needs[i].needNumber / GameManager.instance.activePartyMembers[charIndex].needs[i].maxNeedMeter;
+        }
     }
 }

@@ -12,6 +12,11 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] float smoothSpeed;
 
+    private void Start()
+    {
+        target = FindObjectOfType<PlayerController>().transform;
+    }
+
     private void FixedUpdate()
     {
         desiredPos = target.position + offset;

@@ -51,4 +51,55 @@ public class CharacterStatus : MonoBehaviour
         needs[index].needName = needName;
         needs[index].needNumber = 100f;
     }
+
+    public void DeductNeeds()
+    {
+        for(int i = 0; i < needs.Length; i++)
+        {
+            if (needs[i].needNumber > 0)
+            {
+                needs[i].needNumber -= (1 / needs[i].depleteRate) * GamePause.deltaTime;
+
+                if(needs[i].needNumber <= 0)
+                {
+                    needs[i].needNumber = 0;
+                }
+            }
+        }
+    }
+
+    public void AffectNeed(string posNeed, string negNeed, float posNeedVal, float negNeedVal)
+    {
+        for(int i = 0; i < needs.Length; i++)
+        {
+            if(needs[i].needName == posNeed)
+            {
+                needs[i].needNumber += posNeedVal;
+                if(needs[i].needNumber >= needs[i].maxNeedMeter)
+                {
+                    needs[i].needNumber = needs[i].maxNeedMeter;
+                }
+                i = needs.Length;
+            }
+        }
+
+        for(int i = 0; i < needs.Length; i++)
+        {
+            if(needs[i].needName == negNeed)
+            {
+                needs[i].needNumber -= negNeedVal;
+                if(needs[i].needNumber <= 0)
+                {
+                    needs[i].needNumber = 0;
+                }
+                i = needs.Length;
+            }
+        }
+    }
+
+    public void ApplyNeedsEffect()
+    {
+        //Apply effect based on need and based on threshold (Whether or not it has passed a specific threshold, which will vary)
+        //Read the doc for effects
+    }
 }

@@ -102,6 +102,11 @@ public class Item : MonoBehaviour
             //Set armour power accordingly
         }
 
+        if (affectNeed)
+        {
+            AffectNeed(selectedChar);
+        }
+
         ItemManager.instance.RemoveItem(itemName);
     }
 
