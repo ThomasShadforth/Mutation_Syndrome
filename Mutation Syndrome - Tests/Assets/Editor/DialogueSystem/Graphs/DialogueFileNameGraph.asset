@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2766c9410fe86d14d8040c3a96675c95, type: 3}
+  m_Name: DialogueFileNameGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: DialogueFileName
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 84076df4-d81f-4668-8749-6e8a0d65f21f
+    <Name>k__BackingField: StartingNodeESKETIT
+    <NameText>k__BackingField: Speaker Name
+    <Text>k__BackingField: Dialogue Text
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <dialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 462, y: 224}
+  <OldGroupNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - StartingNodeESKETIT
+  <OldGroupedNodeNames>k__BackingField:
+    list: []
