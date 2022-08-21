@@ -10,4 +10,7 @@ public class BattleMove
     public int cost;
     public AttackEffect effect;
     public string effectiveAgainst;
+    public bool appliesEffect;
+    public string effectApplied;
+    public float effectChance;
 }

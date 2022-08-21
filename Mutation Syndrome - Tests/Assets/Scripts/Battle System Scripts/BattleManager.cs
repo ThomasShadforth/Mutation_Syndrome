@@ -403,16 +403,31 @@ public class BattleManager : MonoBehaviour
     public IEnumerator PlayerAttack(string attackName, int selectedTarget)
     {
         int movePower = 10;
-        
-        /*for (int i = 0; i < moveList.Length; i++) {
-            if (attackName == moveList[i].moveName) {
-                //instantiate move effect
-                movePower = moveList[i].attackPower;
-            } 
-        }*/
-        yield return null;
-        DealDamage(selectedTarget, movePower);
 
+        BattleMove selectedMove = null;
+
+        for (int i = 0; i < moveList.Length; i++) {
+            if (attackName == moveList[i].moveName) {
+                selectedMove = moveList[i];
+                //instantiate move effect
+                movePower = selectedMove.attackPower;
+            } 
+        }
+        yield return null;
+
+        if (selectedMove != null)
+        {
+            DealDamage(selectedTarget, movePower);
+            if (selectedMove.appliesEffect)
+            {
+                if (Random.Range(0.0f, 1.0f) < selectedMove.effectChance)
+                {
+                    //For example, if the decimal chance of an effect is .3, then there is roughly a 30% chance of the effect being applied
+                    //.5, then chance is roughly 50%, and so on
+                    ApplyEffect(selectedTarget, selectedMove.effectApplied);
+                }
+            }
+        }
         
     }
 
@@ -467,8 +482,8 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        /*
-        BattleMove selectedMove = battlers[currentTurn].knownAttacks[Random.Range(0, battlers[currentTurn].knownAttacks.Length)];
+        
+        /*BattleMove selectedMove = battlers[currentTurn].knownAttacks[Random.Range(0, battlers[currentTurn].knownAttacks.Length)];
 
         float totalDamage = selectedMove.attackPower;
 
@@ -482,8 +497,18 @@ public class BattleManager : MonoBehaviour
             }
         }
 
+        
+
         yield return null;
-        DealDamage(battlers[currentTurn].selectedTarget, totalDamage);*/
+        DealDamage(battlers[currentTurn].selectedTarget, totalDamage);
+
+        if (selectedMove.appliesEffect)
+        {
+            if (Random.Range(0.0f, 1.0f) < selectedMove.effectChance)
+            {
+                ApplyEffect(battlers[currentTurn].selectedTarget, selectedMove.effectApplied)
+            }
+        }*/
 
         yield return null;
         DealDamage(battlers[currentTurn].selectedTarget, 10);
